@@ -1,0 +1,13 @@
+version: "3"
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana_whitney
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - type: bind
+        source: ./whitney.ini
+        target: /etc/grafana/grafana.ini
+

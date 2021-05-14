@@ -1,0 +1,28 @@
+version: "3"
+networks:
+  mysql-network:
+volumes:
+  covid_mysql:
+services: 
+  app:
+    image: kr/covid_whitney 
+    container_name: covid_whitney
+    restart: always
+    build: .
+    ports: 
+      - "1337:1337"
+    networks:
+      - mysql-network
+  mysql:
+      image: mysql/mysql-server:latest
+      container_name: mysql_whitney
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: 'root'
+      ports:
+        - "3306:3306"
+      volumes:
+        - ./data:/var/lib/mysql
+        - ./schema:/docker-entrypoint-initdb.d/:ro
+      networks:
+        - mysql-network

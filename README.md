@@ -12,3 +12,8 @@ www.whitney.rip
 
 Grafana instance for Whitney. Serves Node-Exporter system metrics held in Prometheus.
 Served at www.grafana.whitney.rip.
+
+##### Minecraft
+
+Spigot Minecraft server. Served on `www.whitney.rip:25565`.
+

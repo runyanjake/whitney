@@ -1,0 +1,14 @@
+version: "3"
+services:
+  minecraft:
+    image: nimmis/spigot
+    container_name: minecraft_whitney
+    restart: always
+    ports:
+      - "25565:25565"
+    volumes:
+      - ./spigot:/minecraft
+    environment:
+      - EULA=true
+      - MC_MAXMEM=2g
+      - MC_MINMEM=512m

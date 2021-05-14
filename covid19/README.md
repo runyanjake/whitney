@@ -8,7 +8,7 @@ You might need to create a data folder that the volume goes into.
 </br>
 If a data file is available you can add it in the `schema` folder. It will be copied over by docker-compose and mysql will pick it up and execute it.
 </br>
-NOTE: The data file must come alphabetically after the `create_schema.sql` file since msyql will execute them in alpha order.
+NOTE: Mysql seems to only execute the create_schema.sql file. Any data files have to be executed after the fact by being piped into mysql.
 </br>
 </br>
 The mysql container needs a new user created after the fact.

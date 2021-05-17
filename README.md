@@ -21,3 +21,11 @@ Served at `www.grafana.whitney.rip`.
 
 Spigot Minecraft server. Served on `www.whitney.rip:25565`.
 
+##### Node
+
+A simple node server from https://github.com/runyanjake/node_whitney, dockerized for ease of use.
+
+##### Node-Exporter
+
+System metrics exporter that exports system metrics to Prometheus, where they are exposed to Grafana.
+

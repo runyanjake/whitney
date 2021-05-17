@@ -6,15 +6,15 @@ Clone that repo and copy the relevant files into the same directory as docker-co
 </br>
 A few inital setup steps need to be taken after the container is started (see below).
 
+### Build Image With Docker
+
+docker build --tag="kr/covid_whitney" .
+
 ### Start with Docker-Compose
 
 Creates the mysql container, the covid container, and a shared network they communicate on.
 </br>
 docker-compose up -d
-
-### Build Image With Docker
-
-docker build --tag="kr/covid_whitney" .
 
 ### Start with Plain Docker (Just the Covid App)
 

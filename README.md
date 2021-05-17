@@ -29,3 +29,11 @@ A simple node server from https://github.com/runyanjake/node_whitney, dockerized
 
 System metrics exporter that exports system metrics to Prometheus, where they are exposed to Grafana.
 
+##### Plex
+
+Self-hosted plex instance.
+
+##### Prometheus
+
+Prometheus vanilla instance that reads from Node-Exporter and exports metrics for Grafana to read.
+

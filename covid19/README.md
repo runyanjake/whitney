@@ -8,19 +8,19 @@ A few inital setup steps need to be taken after the container is started (see be
 
 ### Build Image With Docker
 
-docker build --tag="kr/covid_whitney" .
+`docker build --tag="kr/covid_whitney" .`
 
 ### Start with Docker-Compose
 
 Creates the mysql container, the covid container, and a shared network they communicate on.
 </br>
-docker-compose up -d
+`docker-compose up -d`
 
 ### Start with Plain Docker (Just the Covid App)
 
 Build the image with:
 </br>
-docker build --tag="kr/covid_whitney" .
+`docker build --tag="kr/covid_whitney" .`
 </br>
 Run the image with: 
 </br>

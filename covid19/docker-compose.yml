@@ -1,8 +1,6 @@
 version: "3"
 networks:
   mysql-network:
-volumes:
-  covid_mysql:
 services: 
   app:
     image: kr/covid_whitney 
@@ -22,7 +20,7 @@ services:
       ports:
         - "3306:3306"
       volumes:
-        - ./data:/var/lib/mysql
+        - /data/covid19:/var/lib/mysql
         - ./schema:/docker-entrypoint-initdb.d/:ro
       networks:
         - mysql-network

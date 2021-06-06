@@ -13,4 +13,6 @@ services:
       - /data/plex/:/config
       - /data/plex/tvseries:/tv
       - /data/plex/movies:/movies
+      - /data/plex/photos:/photos
+      - /data/plex/homevideos:/homevideos
       - /data/plex/transcode:/transcode

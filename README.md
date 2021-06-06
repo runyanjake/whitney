@@ -8,6 +8,10 @@ www.whitney.rip
 
 ### Services
 
+##### Certbot
+
+Certbot helps me keep my letsencrypt certificates up to date for whitney.rip.
+
 ##### Covid 19 App
 
 Covid 19 app from `https://github.com/KevRunAmok/Covid19app` & dockerized by me to build both the app and the dependancy mysql container.
@@ -29,3 +33,6 @@ A simple node server from https://github.com/runyanjake/node_whitney, dockerized
 
 Self-hosted plex instance.
 
+##### Portainer
+
+Admin console for monitoring docker containers.

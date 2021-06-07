@@ -7,7 +7,7 @@ services:
   certbot:
     image: certbot/dns-cloudflare
     volumes:
-      - ./data/certbot_etc:/etc/letsencrypt
+      - /data/certbot:/etc/letsencrypt
       - ./runyan.dev:/etc/nginx/nginx.conf
       - ./cloudflare.ini:/root/cloudflare.ini
     command: >-

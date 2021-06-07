@@ -1,0 +1,104 @@
+# Redirect http traffic to https
+server {
+	listen		80;
+	listen		[::]:80;
+	server_name	*.whitney.rip www.whitney.rip whitney.rip;
+	return		301 https://$host$request_uri;
+}
+
+# Whitney Main HTML
+server {
+	listen			443 ssl;
+	listen			[::]:443 ssl;
+	ssl_certificate		/data/certbot/live/whitney.rip/fullchain.pem;
+	ssl_certificate_key	/data/certbot/live/whitney.rip/privkey.pem;
+
+	root /var/www/html/whitney.rip;
+	index index.html;
+	error_page 404 /404.html;
+
+	server_name www.whitney.rip whitney.rip;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	location /about {
+		index /about/about.html;
+	}
+
+	location /404.html {
+		internal;
+	}
+}
+
+#Whitney Portainer Proxy
+server {
+	listen			443 ssl;
+	listen			[::]:443 ssl;
+	ssl_certificate		/data/certbot/live/whitney.rip/fullchain.pem;
+	ssl_certificate_key	/data/certbot/live/whitney.rip/privkey.pem;
+
+	server_name admin.whitney.rip;
+
+	location / {
+		proxy_pass http://127.0.0.1:9000;
+	}
+}
+
+#Whitney Grafana Proxy
+server {
+	listen			443 ssl;
+	listen			[::]:443 ssl;
+	ssl_certificate		/data/certbot/live/whitney.rip/fullchain.pem;
+	ssl_certificate_key	/data/certbot/live/whitney.rip/privkey.pem;
+	
+	server_name grafana.whitney.rip;
+	
+	location / {
+		proxy_pass http://127.0.0.1:3000;
+	}
+}
+
+#Whitney Node Server
+server {
+	listen			443 ssl;
+	listen			[::]:443 ssl;
+	ssl_certificate		/data/certbot/live/whitney.rip/fullchain.pem;
+	ssl_certificate_key	/data/certbot/live/whitney.rip/privkey.pem;
+	
+	server_name node.whitney.rip;
+
+	location / {
+		proxy_pass http://127.0.0.1:8081;
+	}
+}
+
+#KR Covid project
+server { 
+	listen			443 ssl;
+	listen			[::]:443 ssl;
+	ssl_certificate		/data/certbot/live/whitney.rip/fullchain.pem;
+	ssl_certificate_key	/data/certbot/live/whitney.rip/privkey.pem;
+	
+	server_name covid.whitney.rip;
+	
+	location / {
+		proxy_pass http://127.0.0.1:1337;
+	}
+}
+
+
+#Whitney Minecraft Server
+server { 
+	listen			443 ssl;
+	listen			[::]:443 ssl;
+	ssl_certificate		/data/certbot/live/whitney.rip/fullchain.pem;
+	ssl_certificate_key	/data/certbot/live/whitney.rip/privkey.pem;
+	
+	server_name minecraft.whitney.rip;
+	
+	location / {
+		proxy_pass http://127.0.0.1:25565;
+	}
+}

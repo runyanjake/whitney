@@ -1,0 +1,40 @@
+# Redirect http traffic to https
+server { 
+	listen		80;
+	listen		[::]:80;
+	server_name	www.runyan.dev runyan.dev;
+	return 		301 https://runyan.dev$request_uri;
+}
+
+# Default Runyan.dev
+server {
+	listen			443 ssl;
+	listen			[::]:443 ssl;
+	ssl_certificate 	/data/certbot/live/runyan.dev/fullchain.pem;
+	ssl_certificate_key	/data/certbot/live/runyan.dev/privkey.pem;
+
+	root /var/www/html/runyan.dev;
+	index index.html;
+	server_name www.runyan.dev runyan.dev;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+
+# Jake Portfolio
+server {
+	listen			443 ssl;
+	listen			[::]:443 ssl;	
+	ssl_certificate 	/data/certbot/live/runyan.dev/fullchain.pem;
+	ssl_certificate_key	/data/certbot/live/runyan.dev/privkey.pem;
+	
+	root /var/www/html/runyan.dev/jake.runyan.dev;
+	index index.html;
+	server_name jake.runyan.dev;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+}

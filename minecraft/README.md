@@ -7,7 +7,8 @@ Data stored on disk rather than docker volume so things like the config can be e
 Good practice to give the container names like minecraft_whitney_1.17 for versioning/if we want to reroll servers.
 </br>
 Monitoring commands to get logs from the container are documented in the github repo.
-
+</br>
+example: `docker exec minecraft_whitney_1.17 mc_log`
 ### Start with Docker Compose
 
 `docker-compose up -d`

@@ -8,6 +8,7 @@ services:
       - "25565:25565"
     volumes:
       - /data/minecraft:/minecraft
+      - ./server.properties:/minecraft/server.properties
     environment:
       - EULA=true
       - MC_MAXMEM=2g

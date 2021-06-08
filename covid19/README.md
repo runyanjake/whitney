@@ -4,7 +4,9 @@ Covid 19 app from `https://github.com/KevRunAmok/Covid19app` & dockerized by me 
 </br>
 Clone that repo and copy the relevant files into the same directory as docker-compose.yml before moving on.
 </br>
-A few inital setup steps need to be taken after the container is started (see below).
+A few inital setup steps need to be taken if building the container from scratch. (see below)
+</br>
+Also make sure that the `./schema` folder is created with sql to create the database and populate data.
 
 ### Build Image With Docker
 

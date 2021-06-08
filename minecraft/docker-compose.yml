@@ -7,7 +7,7 @@ services:
     ports:
       - "25565:25565"
     volumes:
-      - ./spigot:/minecraft
+      - /data/minecraft:/minecraft
     environment:
       - EULA=true
       - MC_MAXMEM=2g

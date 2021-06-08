@@ -1,8 +1,12 @@
 # Whitney Minecraft
 
-This is my self hosted Spigot minecraft server. Based off of https://github.com/nimmis/docker-spigot. 
+PWS hosted Minecraft server. Based off of https://github.com/nimmis/docker-spigot. 
 </br>
-Before running may need to create a `minecraft` directory in this folder. idk if docker will know to create it.
+Data stored on disk rather than docker volume so things like the config can be edited via just ssh. 
+</br>
+Good practice to give the container names like minecraft_whitney_1.17 for versioning/if we want to reroll servers.
+</br>
+Monitoring commands to get logs from the container are documented in the github repo.
 
 ### Start with Docker Compose
 

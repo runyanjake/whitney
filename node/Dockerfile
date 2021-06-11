@@ -5,13 +5,13 @@ FROM node:14
 WORKDIR /etc/node
 
 # Include deps (package & package-lock if applicable)
-COPY package*.json ./
+COPY node_repo/package*.json ./
 
 # Install deps
 RUN npm install
 
 # Copy source
-COPY . .
+COPY node_repo/ .
 
 # Expose on port 8081
 EXPOSE 8081

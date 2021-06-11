@@ -1,0 +1,9 @@
+version: "3"
+services:
+  node:
+    image: whitney/node_whitney
+    container_name: node_whitney
+    restart: always
+    ports:
+      - "8081:8081"
+    

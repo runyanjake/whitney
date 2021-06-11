@@ -1,6 +1,6 @@
 # whitney-node
 Dockerized node app from https://github.com/runyanjake/node_whitney that runs on www.node.whitney.rip. 
-Clone the repo and copy files into this folder before building.
+Clone the repo and copy files into this folder before building. The code here expects it cloned into `./node_repo`.
 
 ### Build Image With Docker
 

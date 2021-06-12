@@ -2,11 +2,13 @@ version: "3"
 networks:
   mysql-network:
 services: 
-  app:
+  covid_app:
     image: kr/covid_whitney 
     container_name: covid_whitney
     restart: always
     build: .
+    depends_on:
+      - mysql
     ports: 
       - "1337:1337"
     networks:

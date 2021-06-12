@@ -7,6 +7,8 @@ Clone that repo and copy the relevant files into the same directory as docker-co
 A few inital setup steps need to be taken if building the container from scratch. (see below)
 </br>
 Also make sure that the `./schema` folder is created with sql to create the database and populate data.
+</br>
+Note: If mysql can't start due to `Another process with pid 30 is using unix socket file`, this was fixed by exec-ing to the container and poking around.
 
 ### Build Image With Docker
 

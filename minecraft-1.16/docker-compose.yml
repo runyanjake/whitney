@@ -2,12 +2,12 @@ version: "3"
 services:
   minecraft:
     image: nimmis/spigot
-    container_name: minecraft_whitney
+    container_name: minecraft_whitney_1.16
     restart: always
     ports:
-      - "25565:25565"
+      - "25564:25564"
     volumes:
-      - /data/minecraft:/minecraft
+      - /data/minecraft_1.16:/minecraft
       - ./server.properties:/minecraft/server.properties
     environment:
       - EULA=true

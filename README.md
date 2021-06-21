@@ -18,12 +18,12 @@ Covid 19 app from `https://github.com/KevRunAmok/Covid19app` & dockerized by me 
 
 ##### Grafana
 
-Grafana instance for Whitney. Creates a Grafana instance along with the dependancies Prometheus and Node-Exporter. 
+Grafana instance for Whitney. Creates a Grafana and Node-Exporter instance that interface with the Prometheus instance. 
 Served at `www.grafana.whitney.rip`.
 
 ##### Minecraft
 
-Spigot Minecraft server. Served on `www.whitney.rip:25565`.
+Minecraft servers, dockerized. Emits metrics that are read by Prometheus, and shown in grafana. Responsible for spinning up the servers that run at `mc.whitney.rip` and `minecraft.whitney.rip`. 
 
 ##### Node
 
@@ -36,3 +36,8 @@ Self-hosted plex instance.
 ##### Portainer
 
 Admin console for monitoring docker containers.
+
+##### Prometheus
+
+Central Prometheus instance responsible for gathering metrics and exposing them to Grafana.
+

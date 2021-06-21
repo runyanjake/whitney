@@ -19,3 +19,10 @@ example: `docker exec minecraft_whitney_1.17 mc_log`
 
 `docker run -d -p 25565:25565 --network=host --restart=always --name=minecraft_1.16_whitney -e EULA=true -e MC_MAXMEM=2g -e MC_MINMEM=512m -v /data/minecraft_1.16:/minecraft nimmis/spigot`
 `docker run -d -p 25565:25565 --restart=always -e TYPE=SPIGOT --name=minecraft_1.17_whitney -e EULA=TRUE -v /data/minecraft_1.17:/data -v ./server.properties:/data/server.properties itzg/minecraft-server`
+
+##### Plugins
+
+Metrics: `https://github.com/sladkoff/minecraft-prometheus-exporter` as described above. Build jar and copy to jars folder. Ensure hostname is set to 0.0.0.0 to allow for remote pings.
+</br>
+SinglePlayerSleep: `https://www.spigotmc.org/resources/singleplayersleep.68139/`
+

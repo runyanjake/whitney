@@ -1,13 +1,13 @@
 global:
   scrape_interval:     15s
   external_labels:
-    monitor: 'codelab-monitor'
-scrape_configs: 
+    monitor: 'minecraft-monitor'
+scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: 5s
     static_configs:
       - targets: ['localhost:9090']
-  - job_name: 'node_exporter'
+  - job_name: 'minecraft_1.17'
     scrape_interval: 5s
     static_configs:
-      - targets: ['node_exporter_whitney:9100']
+      - targets: ['minecraft_1.17_whitney:9225']

@@ -1,0 +1,59 @@
+version: "3"
+
+networks:
+  minecraft_network:
+
+volumes:
+  prometheus_minecraft_data: {}
+
+services:
+  minecraft_1.16:
+    image: nimmis/spigot
+    container_name: minecraft_1.16_whitney
+    restart: always
+    networks:
+      - minecraft_network
+    ports:
+      - "25564:25564"
+    volumes:
+      - /data/minecraft_1.16:/minecraft
+      - ./server_1.16.properties:/minecraft/server.properties
+    environment:
+      - EULA=true
+      - MC_MAXMEM=2g
+      - MC_MINMEM=512m
+  minecraft_1.17:
+    image: itzg/minecraft-server
+    container_name: minecraft_1.17_whitney
+    restart: always 
+    networks:
+      - minecraft_network
+    ports:
+      - "25565:25565"
+      - "9225:9225"
+    volumes:
+      - /data/minecraft_1.17:/data
+      - ./server_1.17.properties:/data/server.properties
+      - ./minecraft-prometheus-exporter-2.4.2-SNAPSHOT.jar:/minecraft/plugins/minecraft-prometheus-exporter-2.4.2-SNAPSHOT.jar
+    environment:
+      - TYPE=SPIGOT
+      - EULA=TRUE
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus_minecraft_whitney
+    restart: always
+    networks:
+      - minecraft_network
+    depends_on:
+      - minecraft_1.16
+      - minecraft_1.17
+    ports:
+      - "9091:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus.yml
+      - prometheus_minecraft_data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/usr/share/prometheus/console_libraries"
+      - "--web.console.templates=/usr/share/prometheus/consoles"

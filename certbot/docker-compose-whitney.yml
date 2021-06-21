@@ -1,8 +1,5 @@
 version: '3'
 
-volumes:
-  certbot_etc:
-
 services:
   certbot:
     image: certbot/dns-cloudflare

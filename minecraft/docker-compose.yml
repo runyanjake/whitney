@@ -2,9 +2,7 @@ version: "3"
 
 networks:
   minecraft_network:
-
-volumes:
-  prometheus_minecraft_data: {}
+    driver: bridge
 
 services:
   minecraft_1.16:
@@ -38,22 +36,4 @@ services:
     environment:
       - TYPE=SPIGOT
       - EULA=TRUE
-  prometheus:
-    image: prom/prometheus:latest
-    container_name: prometheus_minecraft_whitney
-    restart: always
-    networks:
-      - minecraft_network
-    depends_on:
-      - minecraft_1.16
-      - minecraft_1.17
-    ports:
-      - "9091:9090"
-    volumes:
-      - ./prometheus.yml:/etc/prometheus.yml
-      - prometheus_minecraft_data:/prometheus
-    command:
-      - "--config.file=/etc/prometheus.yml"
-      - "--storage.tsdb.path=/prometheus"
-      - "--web.console.libraries=/usr/share/prometheus/console_libraries"
-      - "--web.console.templates=/usr/share/prometheus/consoles"
+

@@ -1,6 +1,6 @@
 # Whitney Grafana
 
-Grafana instance for Whitney that produces system metrics. Creates a Node-Exporter container that reads system metrics and creates a Prometheus instance that it sends metrics to. Grafana can be configured to read from Prometheus once created.
+Grafana instance for Whitney that produces system metrics. Creates a Node-Exporter container that reads system metrics. A bridge network is created to allow Prometheus to query Node Exporter for metrics. Grafana connects to Prometheus via its bridge network to gather aggregated metrics.
 </br>
 Custom configuration held in grafana.ini.
 </br>

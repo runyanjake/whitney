@@ -36,8 +36,7 @@ Note: this requires the mysql-network. If not created already create it with:
 
 ## Container Setup Steps
 
-1. Execute the setup script if it was not auto-run. This sets up the mysql schema.
-You'll have provided the .sql file in your ./data folder. It's copied to /docker-entrypoint-initdb.d/ and you can run while exec'd onto the container.
+1. Run the container(s) with docker-compose. Watch logs for mysql and wait till it's ready to aaccept connections.
 2. Create a user who can query the tables.
 - `docker exec -it mysql_whitney mysql -uroot -proot`
 - `select * from mysql.user;`

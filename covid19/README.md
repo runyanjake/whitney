@@ -42,6 +42,7 @@ Note: this requires the mysql-network. If not created already create it with:
 - `select * from mysql.user;`
 - `CREATE USER 'kr_covid'@'%' IDENTIFIED BY 'kr_covid';`
 - `ALTER USER 'kr_covid'@'%' IDENTIFIED WITH mysql_native_password BY 'covid123';`
+- `GRANT ALL ON sql_covid19.* to 'kr_covid'@'%';`
 - After adding this user you can exec onto the container and run mysql from there.
 3. Import any data. (Note this step must be done each time the databases is wiped - aka when the persistant folder /data/covid19/mysql is deleted.)
 If you specified it in `./schema` it'll also be copied into `/docker-entrypoint-initdb.d/`

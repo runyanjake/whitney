@@ -40,8 +40,10 @@ Note: this requires the mysql-network. If not created already create it with:
 You'll have provided the .sql file in your ./data folder. It's copied to /docker-entrypoint-initdb.d/ and you can run while exec'd onto the container.
 2. Create a user who can query the tables.
 - `docker exec -it mysql_whitney mysql -uroot -proot`
+- `select * from mysql.user;`
 - `CREATE USER 'kr_covid'@'%' IDENTIFIED BY 'kr_covid';`
 - `ALTER USER 'kr_covid'@'%' IDENTIFIED WITH mysql_native_password BY 'covid123';`
+- After adding this user you can exec onto the container and run mysql from there.
 3. Import any data.
 If you specified it in ./data it'll also be copied into /docker-entrypoint-initdb.d/
 

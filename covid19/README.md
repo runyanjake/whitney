@@ -8,7 +8,7 @@ A few inital setup steps need to be taken if building the container from scratch
 </br>
 Also make sure that the `./schema` folder is created with sql to create the database and populate data.
 </br>
-Note: If mysql can't start due to `Another process with pid 30 is using unix socket file`, this was fixed by exec-ing to the container and poking around.
+Note: If mysql can't start due to `Another process with pid 30 is using unix socket file`, this is likely because the socket file was locked when the container was last shut down. It persists to `/data/covid19/mysql.sock.lock` so removing this should fix the issue.
 
 ### Build Image With Docker
 

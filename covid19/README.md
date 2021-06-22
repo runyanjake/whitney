@@ -44,6 +44,6 @@ You'll have provided the .sql file in your ./data folder. It's copied to /docker
 - `CREATE USER 'kr_covid'@'%' IDENTIFIED BY 'kr_covid';`
 - `ALTER USER 'kr_covid'@'%' IDENTIFIED WITH mysql_native_password BY 'covid123';`
 - After adding this user you can exec onto the container and run mysql from there.
-3. Import any data.
-If you specified it in ./data it'll also be copied into /docker-entrypoint-initdb.d/
+3. Import any data. (Note this step must be done each time the databases is wiped - aka when the persistant folder /data/covid19/mysql is deleted.)
+If you specified it in `./schema` it'll also be copied into `/docker-entrypoint-initdb.d/`
 

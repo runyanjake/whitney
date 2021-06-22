@@ -12,3 +12,6 @@ We also need to create a dashboard if starting from scratch. A good default one 
 
 `docker-compose up -d`
 
+#### Customization Notes
+Images can be hosted by imgur and added in html to a Text Panel.
+

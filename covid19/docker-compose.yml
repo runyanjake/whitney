@@ -19,10 +19,11 @@ services:
       restart: always
       environment:
         MYSQL_ROOT_PASSWORD: 'root'
+      command: mysqld --sql_mode="" --character-set-server=utf8 --collation-server=utf8_slovenian_ci --init-connect='SET NAMES UTF8;' --innodb-flush-log-at-trx-commit=0
       ports:
         - "3306:3306"
       volumes:
-        - /data/covid19:/var/lib/mysql
+        - /data/covid19/mysql:/var/lib/mysql
         - ./schema:/docker-entrypoint-initdb.d/:ro
       networks:
         - mysql-network

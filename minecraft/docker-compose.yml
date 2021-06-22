@@ -6,20 +6,21 @@ networks:
 
 services:
   minecraft_1.16:
-    image: nimmis/spigot
+    image: itzg/minecraft-server:java15
     container_name: minecraft_1.16_whitney
-    restart: always
+    restart: always 
     networks:
       - minecraft_network
     ports:
-      - "25564:25564"
+      - "25564:25565"
+      - "9224:9225"
     volumes:
-      - /data/minecraft_1.16:/minecraft
-      - ./server_1.16.properties:/minecraft/server.properties
+      - /data/minecraft_1.16:/data
+      - ./server_1.16.properties:/data/server.properties
     environment:
-      - EULA=true
-      - MC_MAXMEM=2g
-      - MC_MINMEM=512m
+      - TYPE=SPIGOT
+      - VERSION=1.16.5
+      - EULA=TRUE
   minecraft_1.17:
     image: itzg/minecraft-server
     container_name: minecraft_1.17_whitney
@@ -32,7 +33,6 @@ services:
     volumes:
       - /data/minecraft_1.17:/data
       - ./server_1.17.properties:/data/server.properties
-      - ./minecraft-prometheus-exporter-2.4.2-SNAPSHOT.jar:/minecraft/plugins/minecraft-prometheus-exporter-2.4.2-SNAPSHOT.jar
     environment:
       - TYPE=SPIGOT
       - EULA=TRUE

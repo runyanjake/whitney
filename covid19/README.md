@@ -39,7 +39,7 @@ Note: this requires the mysql-network. If not created already create it with:
 1. Run the container(s) with docker-compose. Watch logs for mysql and wait till it's ready to aaccept connections.
 2. Create a user who can query the tables.
 - `docker exec -it mysql_whitney mysql -uroot -proot`
-- `select * from mysql.user;`
+- `select * from mysql.user;`/`select Host, User from mysql.user;`
 - `CREATE USER 'kr_covid'@'%' IDENTIFIED BY 'kr_covid';`
 - `ALTER USER 'kr_covid'@'%' IDENTIFIED WITH mysql_native_password BY 'covid123';`
 - `GRANT ALL ON sql_covid19.* to 'kr_covid'@'%';`

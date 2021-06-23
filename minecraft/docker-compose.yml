@@ -16,11 +16,20 @@ services:
       - "9224:9225"
     volumes:
       - /data/minecraft_1.16:/data
-      - ./server_1.16.properties:/data/server.properties
     environment:
       - TYPE=SPIGOT
       - VERSION=1.16.5
       - EULA=TRUE
+      - SERVER_NAME=minecraft_1.16_whitney
+      - MODE=SPECTATOR
+      - DIFFICULTY=HARD
+      - OPS=RicecakeSMS
+      - ICON=https://i.imgur.com/sqjZGql.png
+      - ENABLE_COMMAND_BLOCK=TRUE
+      - FORCE_GAMEMODE=TRUE
+      - SEED=05181997
+      - MOTD="\u00A77Pinnerland 1.16, powered by \u00A75P\u00A79W\u00A75S\u00A77\!"
+      - ALLOW_FLIGHT=TRUE
   minecraft_1.17:
     image: itzg/minecraft-server
     container_name: minecraft_1.17_whitney
@@ -32,8 +41,44 @@ services:
       - "9225:9225"
     volumes:
       - /data/minecraft_1.17:/data
-      - ./server_1.17.properties:/data/server.properties
     environment:
       - TYPE=SPIGOT
       - EULA=TRUE
-
+      - SERVER_NAME=minecraft_1.17_whitney
+      - MODE=SURVIVAL
+      - DIFFICULTY=HARD
+      - OPS=RicecakeSMS
+      - ICON=https://i.imgur.com/sqjZGql.png
+      - FORCE_GAMEMODE=TRUE
+      - SEED="-20020572336554879265524"
+      - MOTD="\u00A77Pinnerland 1.17, powered by \u00A75P\u00A79W\u00A75S\u00A77\!"
+      - ALLOW_FLIGHT=FALSE
+  minecraft_creative:
+    image: itzg/minecraft-server
+    container_name: minecraft_creative_whitney
+    restart: always 
+    networks:
+      - minecraft_network
+    ports:
+      - "25566:25565"
+      - "9226:9225"
+    volumes:
+      - /data/minecraft_creative:/data
+    environment:
+      - TYPE=SPIGOT
+      - EULA=TRUE
+      - SERVER_NAME=minecraft_creative_whitney
+      - MODE=CREATIVE
+      - DIFFICULTY=hard
+      - OPS=RicecakeSMS
+      - ICON=https://i.imgur.com/sqjZGql.png
+      - ENABLE_COMMAND_BLOCK=TRUE
+      - FORCE_GAMEMODE=TRUE
+      - GENERATE_STRUCTURES=FALSE
+      - SPAWN_ANIMALS=FALSE
+      - SPAWN_MONSTERS=FALSE
+      - SPAWN_NPCS=FALSE
+      - MOTD="\u00A77Pinnerland Creative Server, powered by \u00A75P\u00A79W\u00A75S\u00A77\!"
+      - PVP=FALSE
+      - LEVEL_TYPE=FLAT
+      - ALLOW_FLIGHT=TRUE

@@ -41,3 +41,9 @@ Admin console for monitoring docker containers.
 
 Central Prometheus instance responsible for gathering metrics and exposing them to Grafana.
 
+
+### Issues
+
+- Sometimes on startup mysql/minecraft containers may fail due to lock files persisting after shutoff. Happens mainly when server is hard powered off but can still happen if soft poweroff. Fix by removing (/data/covid/mysql/mysql.sock.lock for mysql, /data/minecraft_xxxx folders for minecraft servers.
+
+

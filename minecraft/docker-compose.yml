@@ -30,7 +30,7 @@ services:
       - MOTD="\u00A77Pinnerland 1.16, powered by \u00A75P\u00A79W\u00A75S\u00A77\!"
       - ALLOW_FLIGHT=true
   minecraft_1.17:
-    image: itzg/minecraft-server
+    image: itzg/minecraft-server:latest
     container_name: minecraft_1.17_whitney
     restart: always 
     networks:
@@ -52,7 +52,7 @@ services:
       - MOTD="\u00A77Pinnerland 1.17, powered by \u00A75P\u00A79W\u00A75S\u00A77\!"
       - ALLOW_FLIGHT=false
   minecraft_creative:
-    image: itzg/minecraft-server
+    image: itzg/minecraft-server:latest
     container_name: minecraft_creative_whitney
     restart: always 
     networks:

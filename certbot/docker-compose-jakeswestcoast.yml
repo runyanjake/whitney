@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  certbot:
+    image: certbot/dns-cloudflare
+    volumes:
+      - /data/certbot:/etc/letsencrypt
+      - ./jakeswestcoast.com:/etc/nginx/nginx.conf
+      - ./cloudflare.ini:/root/cloudflare.ini
+    command: >-
+      certonly --dns-cloudflare
+      --dns-cloudflare-credentials /root/cloudflare.ini
+      --dns-cloudflare-propagation-seconds 60
+      --email runyanjake@gmail.com
+      --agree-tos --no-eff-email
+      --force-renewal
+      -d jakeswestcoast.com
+      -d *.jakeswestcoast.com
+

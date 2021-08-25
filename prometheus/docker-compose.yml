@@ -17,6 +17,7 @@ services:
     container_name: prometheus_whitney
     restart: always
     networks:
+      - prometheus_network
       - grafana_grafana_network
       - minecraft_minecraft_network
     ports:

@@ -2,23 +2,29 @@
 # Downloads covid counts and populates a database with new information.
 
 # check usage and set debug mode
-DEBUG=0
-while getopts "d" OPTIONS
-do
-    case $OPTIONS in
-	d)
-	    echo "Enabling debug mode."
-	    DEBUG=1 
-    esac
-done
-if [ "$#" -gt 1 ]; then
-    echo "Usage: data.sh [-d(ebug mode)]"
+if [ "$#" -gt 0 ]; then
+    echo "Usage: data.sh "
 fi
 
 # Constants (In case things change)
+mysql_credentials_filename=mysql-credentials.txt
 recent_counts_filename=us-counties-recent.csv
 all_counts_filename=us-counties.csv
 sql_filename=tmp.sql
+
+# Read credentials file.
+echo "Reading MySQL credentials file..."
+if [[ ! -e $mysql_credentials_filename ]]; then
+    echo "No mysql credentials file exists. Please create $mysql_credentials_filename with the form"
+    echo "mysql_host mysql_port mysql_user mysql_pass"
+    echo "Exiting with failure code..."
+    exit 1
+fi
+mysql_host=$(awk '{print $1}' $mysql_credentials_filename)
+mysql_port=$(awk '{print $2}' $mysql_credentials_filename)
+mysql_user=$(awk '{print $3}' $mysql_credentials_filename)
+mysql_pass=$(awk '{print $4}' $mysql_credentials_filename)
+echo -e "\e[1A\r\e[KReading MySQL credentials file... Done."
 
 # Prepare working directory by removing any straggler files.
 echo "Preparing working directory..."
@@ -58,13 +64,21 @@ fi
 # TODO
 
 # Build mysql instructions
+touch $sql_filename
 # TODO
 
 # Run mysql instructions
-# TODO can use awk to read values from a credentials file.
+echo "Executing MySQL instructions..."
+mysql -u$mysql_user -p$mysql_pass -h$mysql_host -P$mysql_port < $sql_filename 2> /dev/null
+echo -e "\e[1A\r\e[KExecuting MySQL instructions... Done."
 
 # Create dump of database and save last 3 dumps locally.
-#TODO
+echo "Creating a dump of the database..."
+rm -r ./logs
+mkdir logs
+mysql_dump_name=./logs/mysql_$(date -d "today" +"%Y%m%d%H%M").log
+mysqldump -u$mysql_user -p$mysql_pass -h$mysql_host -P$mysql_port > $mysql_dump_name 2> /dev/null
+echo -e "\e[1A\r\e[KCreating a dump of the database... Done."
 
 # Cleanup
 echo "Cleaning up..."

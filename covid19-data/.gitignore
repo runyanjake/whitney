@@ -1,2 +1,6 @@
-mysql-credentials.txt
 logs/
+daily/last_date.txt
+daily/blacklist.txt
+daily/mysql-credentials.txt
+daily/us-counties-recent.csv
+weekly/mysql-credentials.txt

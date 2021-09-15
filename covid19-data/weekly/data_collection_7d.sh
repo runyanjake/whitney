@@ -1,5 +1,7 @@
+#!/bin/bash
+# data_collection_7d.sh
 # Author @runyanjake
-# Downloads covid counts and populates a database with new information.
+# Updates a database with new information on a weekly basis.
 
 # check usage and set debug mode
 if [ "$#" -gt 0 ]; then

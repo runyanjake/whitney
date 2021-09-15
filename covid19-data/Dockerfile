@@ -2,8 +2,8 @@
 FROM ubuntu:20.04
 
 # copy files
-COPY ./data.sh /etc/data.sh
-COPY ./docker-credentials.txt /etc/docker-credentials.txt
+COPY ./daily /etc/daily
+COPY ./weekly /etc/weekly
 COPY ./cronjob /etc/cron.d/covid-data-cronjob
 
 # install cron

@@ -1,7 +1,12 @@
 # Certbot for Whitney
 
 Creates an instance of Certbot that can generate certificates signed by LetsEncrypt & communicate them to Cloudflare via TXT records.
-Provide cloudflare information in ./cloudflare.ini and a data folder will be created that will contain certificates. (It's recommended to make the file read only and the containing folder read/write/execute for privacy.
+
+### Requirements
+Provide cloudflare api key information in ./cloudflare.ini and a data folder will be created that will contain certificates. (It's recommended to make the file read only and the containing folder read/write/execute for privacy.
+
+If not specified running the container will create a folder called cloudflare.ini that you'll have to delete.
+
 </br>
 Create a cloudflare api key for certbot and put it in cloudflare.ini if the old one has expired.
 </br>

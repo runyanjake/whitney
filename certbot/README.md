@@ -8,7 +8,7 @@ Provide cloudflare api key information in ./cloudflare.ini and a data folder wil
 If not specified running the container will create a folder called cloudflare.ini that you'll have to delete.
 
 </br>
-Create a cloudflare api key for certbot and put it in cloudflare.ini if the old one has expired.
+Create a cloudflare api key for certbot and put it in cloudflare.ini if the old one has expired. Here is an example of the format: https://github.com/linuxserver/docker-letsencrypt/blob/master/root/defaults/dns-conf/cloudflare.ini
 </br>
 References: 
 - https://certbot-dns-cloudflare.readthedocs.io/en/stable/

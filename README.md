@@ -56,3 +56,4 @@ Central Prometheus instance responsible for gathering metrics and exposing them 
 5. Install Github CLI (gh). Add the library and install with apt rather than installing another package manager: https://www.techiediaries.com/install-github-cli-ubuntu-20/
 6. Authenticate with Github (`gh auth login`) with SSH, using a personal access token. Create in settings > developer settings > personal access token. It needs workflow, admin::publickey, and read::org privs.
 7. Set up Portainer. Ensure that the container is running successfully, then allow the port through the ubuntu firewall (ufw) and check it's visible from another computer on the same network.
+8. Set up Grafana and Prometheus. Since there is a circular network dependency for them, you might need to re-run the commands until all the dependencies are set up or create the networks ahead of time. Dependencies are like grafana <--> prometheus --> minecraft

@@ -25,3 +25,4 @@ You also might need to copy a nginx config in here although it's doesn't need to
 `docker-compose up`
 (don't use -d since there may be errors.)
 
+Certificates are saved in `/etc/letsencrypt/live/`.

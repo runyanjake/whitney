@@ -5,7 +5,7 @@ Creates an instance of Certbot that can generate certificates signed by LetsEncr
 ### Requirements
 Provide cloudflare api key information in ./cloudflare.ini and a data folder will be created that will contain certificates. (It's recommended to make the file read only and the containing folder read/write/execute for privacy.
 
-If not specified running the container will create a folder called cloudflare.ini that you'll have to delete.
+If not specified running the container will create a folder called cloudflare.ini that you'll have to delete. If Docker starts considering these folders, you'll have to system prune in order to get your file to be recognized a file and not a folder. Dumb but at least you can get around it quick.
 
 </br>
 Create a cloudflare api key for certbot and put it in cloudflare.ini if the old one has expired. Here is an example of the format: https://github.com/linuxserver/docker-letsencrypt/blob/master/root/defaults/dns-conf/cloudflare.ini

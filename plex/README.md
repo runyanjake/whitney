@@ -22,3 +22,6 @@ Either create the following or mount a drive to /data/plex that has your data.
 
 `docker run -d --name=plex_whitney --net=host -e PUID=1000 -e PGID=1000 -e VERSION=docker -e PLEX_CLAIM= `#optional` -v /data/plex/library:/config -v /data/plex/tvseries:/tv -v /data/plex/movies:/movies -v /data/plex/transcode:/transcode --restart always ghcr.io/linuxserver/plex`
 
+### Notes
+
+When navigating to plex, assuming no nginx routing is happening, you must go to `http://[ip address]:32400/web/index.html#!/`. Just going to port 32400 doesn't work for some reason.

@@ -24,4 +24,4 @@ Either create the following or mount a drive to /data/plex that has your data.
 
 ### Notes
 
-When navigating to plex, assuming no nginx routing is happening, you must go to `http://[ip address]:32400/web/index.html#!/`. Just going to port 32400 doesn't work for some reason.
+When navigating to plex, assuming no nginx routing is happening, you must go to `http://[ip address]:32400/web/index.html#!/` for first time setup. Just going to port 32400 doesn't work for some reason until after the setup is complete.

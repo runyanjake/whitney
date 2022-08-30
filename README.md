@@ -63,5 +63,6 @@ Central Prometheus instance responsible for gathering metrics and exposing them 
 8. Set up Grafana and Prometheus. Since there is a circular network dependency for them, you might need to re-run the commands until all the dependencies are set up or create the networks ahead of time. Dependencies are like grafana <--> prometheus --> minecraft. 
 9. Verify Prometheus is reachable on port 9090. Check that status > targets shows items as green.
 10. Verify Grafana is reachable on port 3000. Log in as admin:admin (default creds) and change the admin password. Create a new Grafana data source to read from Prometheus (see whitney/grafana for more) and import the dashboard with id `1860` as a starting point.
-11. Set up CertBot. Generate certs for all websites we want to have certs for.
-12. Set up Nginx. Make sure any dependent website repos are cloned to /var/www/html/ (made by first unsuccessful run of nginx, or manually)
+11. Set up Jenkins. Reset the admin password and configure any jobs that templates have been saved for.
+12. Set up CertBot. Generate certs for all websites we want to have certs for.
+13. Set up Nginx. Make sure any dependent website repos are cloned to /var/www/html/ (made by first unsuccessful run of nginx, or manually)

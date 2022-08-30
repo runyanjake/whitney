@@ -6,11 +6,11 @@ A self hosted plex server that is basically the vanilla plex docker container.
 
 The container expects its mounted folders to exist already, before it's created. 
 Either create the following or mount a drive to /data/plex that has your data.
-- `/data/plex/tvseries`
-- `/data/plex/movies`
-- `/data/plex/photos`
-- `/data/plex/homevideos`
-- `/data/plex/transcode`
+- `/data/persistent/plex/tvseries`
+- `/data/persistent/plex/movies`
+- `/data/persistent/plex/photos`
+- `/data/persistent/plex/homevideos`
+- `/data/persistent/plex/transcode`
 
 (If Docker has been installed with snap, while installing the OS, you'll have issues here. It's better to seperately install docker-ce and docker-compose.
 
@@ -20,7 +20,7 @@ Either create the following or mount a drive to /data/plex that has your data.
 
 ### Start with Plain Docker
 
-`docker run -d --name=plex_whitney --net=host -e PUID=1000 -e PGID=1000 -e VERSION=docker -e PLEX_CLAIM= `#optional` -v /data/plex/library:/config -v /data/plex/tvseries:/tv -v /data/plex/movies:/movies -v /data/plex/transcode:/transcode --restart always ghcr.io/linuxserver/plex`
+`docker run -d --name=plex_whitney --net=host -e PUID=1000 -e PGID=1000 -e VERSION=docker -e PLEX_CLAIM= `#optional` -v /data/persistent/plex/library:/config -v /data/persistent/plex/tvseries:/tv -v /data/persistent/plex/movies:/movies -v /data/persistent/plex/transcode:/transcode --restart always ghcr.io/linuxserver/plex`
 
 ### Notes
 

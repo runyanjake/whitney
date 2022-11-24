@@ -54,33 +54,34 @@ For setup I followed this official Traefik tutorial: https://doc.traefik.io/trae
 
 ### Actual Traefik Setup
 
-Mainly followed this tutorial: https://doc.traefik.io/traefik/user-guides/docker-compose/acme-tls/ (Still not sure which of these to use at the moment, there are issues generating a new cert with the bundled Let's Encrypt.)
+Followed this tutorial: `https://doc.traefik.io/traefik/user-guides/docker-compose/acme-dns/`.
 
-But there was an issue with certs, which i fixed by providing certs.json as instructed here: https://www.digitalocean.com/community/tutorials/how-to-use-traefik-as-a-reverse-proxy-for-docker-containers-on-ubuntu-18-04
+Providers list for Traefik: `https://doc.traefik.io/traefik/https/acme/#providers`.
 
-##### Notes
+1. Update `docker-compose.yml` with the correct values.
 
-The admin password isn't checked in to github so make sure to generate it with htpasswd and put it into traefik.toml.
+`EMAIL@ME.COM`
 
-`htpasswd -nb user password`
+`CLOUDFLARE@EMAIL.COM`
 
-Form is user:encrypted_password.
+`API_KEY`
 
-Some notable changes from the example: 
+`MYDOMAIN.COM`
 
-- Docker network name is `traefik`, not `web`.
-
-- Let's Encrypt data is getting stored in `certs.json`, not `acme.json`.
-
-### Running the container
-
-1. Create the LetsEncrypt secret file if not exists.
-
-`touch certs.json`
-
-`chmod 600 certs.json`
-
-2. Start the container
+2. Run `docker-compose.yml`
 
 `docker-compose up -d`
 
+3. Test by curl, then on browser.
+
+`curl -vvv https://whitney.rip`
+
+If certificate is not right, can probably debug from the curl response.
+
+Try `https://whitney.rip` in browser, should see the curl response in html.
+
+Running the container will generate the following structure:
+
+`letsencrypt/`
+
+|--> `acme.json`

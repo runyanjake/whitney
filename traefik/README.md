@@ -4,6 +4,8 @@ I got recommended Traefik over Nginx for its ease of use and service discovery.
 
 For setup I followed this official Traefik tutorial: https://doc.traefik.io/traefik/getting-started/quick-start/
 
+`https://doc.traefik.io/traefik/user-guides/docker-compose/basic-example/` is also a good reference.
+
 ### Step 1
 
 1. Run `step1-docker-compose.yml`
@@ -85,3 +87,20 @@ Running the container will generate the following structure:
 `letsencrypt/`
 
 |--> `acme.json`
+
+4. Check that the api is working.
+
+Visit `http://YOUR_IP_HERE:8080/dashboard`
+
+### Additional Steps
+
+1. Start to secure the Traefik Dashboard.
+
+Generate a password with `htpasswd` (`https://doc.traefik.io/traefik/middlewares/http/basicauth/`)
+
+Example using BCrypt: `https://unix.stackexchange.com/questions/307994/compute-bcrypt-hash-from-command-line`. See this thread about Traefik not liking the `$` character: `https://github.com/DeviaVir/zenbot/issues/2663`
+
+
+
+
+

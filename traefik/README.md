@@ -58,7 +58,7 @@ Followed this tutorial: `https://doc.traefik.io/traefik/user-guides/docker-compo
 
 Providers list for Traefik: `https://doc.traefik.io/traefik/https/acme/#providers`.
 
-1. Update `docker-compose.yml` with the correct values.
+1. Update `docker-compose-BLANKED.yml` with the correct values and copy it to `docker-compose.yml`.
 
 `EMAIL@ME.COM`
 

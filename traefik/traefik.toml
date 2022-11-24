@@ -1,0 +1,28 @@
+# GLobal Config
+[global]
+  checkNewVersion = true
+
+# Log Config
+[log]
+  # level = "DEBUG"
+
+# Entry Point Definition
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
+  [entryPoints.websecure]
+    address = ":443"
+
+# API Config
+[api]
+  insecure = true
+
+# Docker Config
+[providers.docker]
+  exposedByDefault = false
+
+# Certificate Config
+[certificatesresolvers.myresolver.acme]
+  email = "jake@runyan.dev"
+  storage = "/letsencrypt/acme.json"
+

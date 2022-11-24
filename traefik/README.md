@@ -94,7 +94,13 @@ Visit `http://YOUR_IP_HERE:8080/dashboard`
 
 ### Additional Steps
 
-1. Start to secure the Traefik Dashboard.
+1. Convert to a static Traefik configuration (seems better)
+
+Create `traefik.toml` and edit the `docker-compose.yml` to ensure that it's copied to one of the searched directories (I chose `/etc/traefik/`)
+
+The conversion from env vars to `traefik.toml` is really easy - each one of them is basically describing one attribute of the yaml, so basically just build the yaml from those attributes.
+
+2. Start to secure the Traefik Dashboard.
 
 Generate a password with `htpasswd` (`https://doc.traefik.io/traefik/middlewares/http/basicauth/`)
 

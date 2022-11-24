@@ -1,3 +1,4 @@
 letsencrypt/
 docker-compose.yml
+traefik.toml
 

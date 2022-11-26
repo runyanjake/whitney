@@ -6,7 +6,9 @@ For setup I followed this official Traefik tutorial: https://doc.traefik.io/trae
 
 `https://doc.traefik.io/traefik/user-guides/docker-compose/basic-example/` is also a good reference.
 
-### Step 1
+### Baby Steps Setup
+
+##### Step 1
 
 1. Run `step1-docker-compose.yml`
 
@@ -22,7 +24,7 @@ For setup I followed this official Traefik tutorial: https://doc.traefik.io/trae
 
 `docker system prune`
 
-### Step 2
+##### Step 2
 
 1. Run `step2-docker-compose.yml`
 
@@ -38,7 +40,7 @@ For setup I followed this official Traefik tutorial: https://doc.traefik.io/trae
 
 `docker system prune`
 
-### Step 3
+##### Step 3
 
 1. Run `step3-docker-compose.yml`
 
@@ -55,6 +57,25 @@ For setup I followed this official Traefik tutorial: https://doc.traefik.io/trae
 `docker system prune`
 
 ### Actual Traefik Setup
+
+##### Step 1: Basic Traefik
+
+Starting with the basic example: `https://doc.traefik.io/traefik/user-guides/docker-compose/basic-example/`
+
+1. Change basic things like names of containers, routing host for the example service.
+
+2. Add a traefik-specific network for the containers to communicate over. Other containers outside of this config file can reference it so that Traefik can discover and send requests to them internally.
+
+3. Run, and test that the whoami container gives its response back correctly.
+
+4. Then, configure other containers to be discovered off of Traefik by adding the basic labels: `traefik.enable`, `traefik.http.routers.container_name.rule`, and `traefik.http.routers.container_name.entrypoints`. 
+
+
+
+
+
+
+### Some old notes from when I tried TLS stuff.
 
 Followed this tutorial: `https://doc.traefik.io/traefik/user-guides/docker-compose/acme-dns/`.
 

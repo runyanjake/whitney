@@ -1,9 +1,20 @@
 version: "3"
+
+networks:
+  traefik_traefik-network:
+    external: true
+
 services:
   node:
     image: whitney/node_whitney
     container_name: node_whitney
     restart: always
+    networks:
+      - traefik_traefik-network
     ports:
       - "8081:8081"
-    
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.node.rule=Host(`node.whitney.rip`)"
+      - "traefik.http.routers.node.entrypoints=web"
+

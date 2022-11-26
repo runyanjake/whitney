@@ -1,4 +1,5 @@
 version: "3"
+
 services:
   plex: 
     image: ghcr.io/linuxserver/plex:latest
@@ -16,3 +17,6 @@ services:
       - /data/persistent/plex/photos:/photos
       - /data/persistent/plex/homevideos:/homevideos
       - /data/persistent/plex/transcode:/transcode
+    labels:
+      - "traefik.enable=false"
+

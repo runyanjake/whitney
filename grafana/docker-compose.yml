@@ -5,6 +5,8 @@ networks:
     driver: bridge
   prometheus_prometheus_network:
     external: true
+  traefik_traefik-network:
+    external: true
 
 volumes:
   grafana_data: {}
@@ -17,11 +19,16 @@ services:
     networks: 
       - grafana_network
       - prometheus_prometheus_network
+      - traefik_traefik-network
     ports:
       - "3000:3000"
     volumes:
       - ./whitney.ini:/etc/grafana/grafana.ini
       - grafana_data:/var/lib/grafana
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grafana.rule=Host(`grafana.whitney.rip`)"
+      - "traefik.http.routers.grafana.entrypoints=web"
   node_exporter:
     image: quay.io/prometheus/node-exporter:latest
     container_name: node_exporter_whitney

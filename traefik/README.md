@@ -71,8 +71,25 @@ Starting with the basic example: `https://doc.traefik.io/traefik/user-guides/doc
 4. Then, configure other containers to be discovered off of Traefik by adding the basic labels: `traefik.enable`, `traefik.http.routers.container_name.rule`, and `traefik.http.routers.container_name.entrypoints`. 
 
 
+##### Step 2: Proper Traefik Config
 
+1. Convert the traefik related command line flags into traefik static and dynamic config. I am using toml files. These are `step5-traefik.toml` and `step5-traefik-dynamic.toml`. The static should reference a folder that the dynamic is copied into in the docker-compose.
 
+Note: These pages are good examples of syntax and options. `https://doc.traefik.io/traefik/reference/static-configuration/file/` and `https://doc.traefik.io/traefik/reference/dynamic-configuration/file/`
+
+Note: The Dynamic config is empty, and this is for good reason. See `https://doc.traefik.io/traefik/routing/providers/docker/` 
+
+`If a label defines a router (e.g. through a router Rule) and a label defines a service (e.g. implicitly through a loadbalancer server port value), but the router does not specify any service, then that service is automatically assigned to the router.`
+
+Because we define the router as labels in docker-compose, we don't have to define them in the dynamic conf, which is where we'd normally have to do it.
+
+From this point, when we add another service, all that has to be done is the following:
+
+> 1. Add the `traefik_traefik-network` as an external network, so that the container can communicate with Traefik internally.
+
+> 2. Add the external network to the container's definition.
+
+> 3. Add labels defining a router for this container. This should at least include the `traefik.enable`, `traefik.http.routers.my_router_name.rule`, and `traefik.http.routers.my_router_name.entrypoints` labels.
 
 
 ### Some old notes from when I tried TLS stuff.

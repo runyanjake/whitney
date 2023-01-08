@@ -24,7 +24,7 @@ services:
       - "3000:3000"
     volumes:
       - ./whitney.ini:/etc/grafana/grafana.ini
-      - grafana_data:/var/lib/grafana
+      - /data/grafana_data:/var/lib/grafana
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.grafana.rule=Host(`grafana.whitney.rip`)"

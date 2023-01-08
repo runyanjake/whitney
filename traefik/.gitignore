@@ -1,4 +1,6 @@
 letsencrypt/
-docker-compose.yml
 tmp/
+docker-compose.yml
+traefik.toml
+traefik-dynamic.toml
 

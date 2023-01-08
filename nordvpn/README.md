@@ -15,3 +15,5 @@ Volumes:
 ```
 FIREWALL=Enable
 ```
+
+Note: If conflicts on qb port, can change it by setting the env var for WEBUI_PORT=xxxx.

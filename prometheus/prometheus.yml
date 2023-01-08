@@ -11,14 +11,10 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ['node_exporter_whitney:9100']
-  - job_name: 'minecraft_1.16'
+  - job_name: 'minecraft_2023'
     scrape_interval: 5s
     static_configs:
-      - targets: ['minecraft_1.16_whitney:9225']
-  - job_name: 'minecraft_1.17'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['minecraft_1.17_whitney:9225']
+      - targets: ['minecraft_2023_whitney:9225']
   - job_name: 'minecraft_creative'
     scrape_interval: 5s
     static_configs:

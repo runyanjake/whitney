@@ -25,4 +25,11 @@ example: `docker exec minecraft_whitney_1.17 mc_log`
 Metrics: `https://github.com/sladkoff/minecraft-prometheus-exporter` as described above. Build jar and copy to jars folder. Ensure hostname is set to 0.0.0.0 to allow for remote pings.
 </br>
 SinglePlayerSleep: `https://www.spigotmc.org/resources/singleplayersleep.68139/`
+</br>
+Dynmap: `https://www.spigotmc.org/resources/dynmap%C2%AE.274/`
+</br>
+NoEndermanGrief: `https://www.spigotmc.org/resources/no-enderman-grief2.71236/`
+</br>
+ajLeaderboards: `https://www.spigotmc.org/threads/ajleaderboards.471179/`
+
 

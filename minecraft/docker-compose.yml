@@ -48,6 +48,7 @@ services:
       - /data/minecraft_2023:/data
     environment:
       - TYPE=SPIGOT
+      - MEMORY=2G
       - VERSION=1.19.2
       - EULA=TRUE
       - SERVER_NAME=minecraft_2023_whitney

@@ -1,24 +1,24 @@
 version: "3"
 
 networks:
-  grafana_network:
+  grafana-network:
     driver: bridge
-  prometheus_prometheus_network:
-    external: true
   traefik_traefik-network:
+    external: true
+  minecraft_minecraft_network:
     external: true
 
 volumes:
   grafana_data: {}
+  prometheus_data: {}
 
 services:
   grafana:
     image: grafana/grafana
     container_name: grafana_whitney
-    restart: always
+    #restart: always
     networks: 
-      - grafana_network
-      - prometheus_prometheus_network
+      - grafana-network
       - traefik_traefik-network
     ports:
       - "3000:3000"
@@ -26,19 +26,44 @@ services:
       - ./whitney.ini:/etc/grafana/grafana.ini
       - /data/grafana_data:/var/lib/grafana
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.grafana.rule=Host(`grafana.whitney.rip`)"
-      - "traefik.http.routers.grafana.entrypoints=web"
+      - traefik.http.routers.grafana.rule=Host(`grafana.whitney.rip`)
+      - traefik.http.routers.grafana.tls=true
+      - traefik.http.routers.grafana.tls.certresolver=lets-encrypt
+      - traefik.http.services.grafana.loadbalancer.server.port=3000
+      - traefik.port=3000
+    depends_on:
+      - node_exporter
+      - prometheus
   node_exporter:
     image: quay.io/prometheus/node-exporter:latest
     container_name: node_exporter_whitney
     user: "995:995"
-    restart: always
+    #restart: always
     networks:
-      - grafana_network
+      - grafana-network
     pid: host
     command:
       - "--path.rootfs=/host"
     volumes:
       - "/:/host:ro,rslave"
+    depends_on:
+      - prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus_whitney
+    #restart: always
+    networks:
+      - grafana-network
+      - minecraft_minecraft_network
+    ports:
+      - "9090:9090"
+    volumes:
+      - "./prometheus.yml:/etc/prometheus.yml"
+      - prometheus_data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/usr/share/prometheus/console_libraries"
+      - "--web.console.templates=/usr/share/prometheus/consoles"
+
 

@@ -3,6 +3,8 @@ version: "3"
 networks:
   minecraft_network:
     driver: bridge
+  grafana_grafana-network:
+    external: true
   traefik_traefik-network:
     external: true
 
@@ -12,6 +14,7 @@ services:
     container_name: minecraft_creative_whitney
     restart: always 
     networks:
+      - grafana_grafana-network
       - minecraft_network
     ports:
       - "25566:25565"
@@ -39,6 +42,7 @@ services:
     restart: always 
     networks:
       - traefik_traefik-network
+      - grafana_grafana-network
       - minecraft_network
     ports:
       - "25565:25565"

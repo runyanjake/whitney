@@ -8,6 +8,8 @@ After starting this image, we still need to create a datasource. Select Promethe
 </br>
 We also need to create a dashboard if starting from scratch. A good default one for node-exporter is `1860`.
 
+The repo contains `grafana.ini`, the config file for grafana. By default this defines the admin account to be `admin:admin`. Change that and save the new file as `whitney.ini`, which is what will be copied into the container.
+
 ### Start with Docker-Compose
 
 `docker-compose up -d`

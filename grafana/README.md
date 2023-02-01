@@ -8,6 +8,10 @@ After starting this image, we still need to create a datasource. Select Promethe
 </br>
 We also need to create a dashboard if starting from scratch. A good default one for node-exporter is `1860`.
 
+Setting up the data source is kind of dumb. you need to both indicate you want to communicate over http and to the container by name. So the correct thing to put when making a prometheus data source is `http://prometheus_whitney:9090`
+
+You can check the contents of Prometheus with `curl localhost:9090/metrics`.
+
 The repo contains `grafana.ini`, the config file for grafana. By default this defines the admin account to be `admin:admin`. Change that and save the new file as `whitney.ini`, which is what will be copied into the container.
 
 ### Start with Docker-Compose

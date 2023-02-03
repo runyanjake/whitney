@@ -16,7 +16,7 @@ services:
   grafana:
     image: grafana/grafana
     container_name: grafana_whitney
-    #restart: always
+    restart: always
     networks: 
       - grafana-network
       - traefik_traefik-network
@@ -38,7 +38,7 @@ services:
     image: quay.io/prometheus/node-exporter:latest
     container_name: node_exporter_whitney
     user: "995:995"
-    #restart: always
+    restart: always
     networks:
       - grafana-network
     pid: host
@@ -51,7 +51,7 @@ services:
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus_whitney
-    #restart: always
+    restart: always
     networks:
       - grafana-network
       - minecraft_minecraft_network
